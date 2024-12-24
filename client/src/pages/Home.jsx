@@ -91,16 +91,16 @@ const Home = () => {
         spacingY="7"
         mt="7"
       >
-        {isLoading || error ? (
+        {isLoading || error.length > 0 ? (
           Array.from({ length: 12 }).map((_, index) => (
             <EventCardSkeleton key={index} />
           ))
-        ) : (
+        ) : events?.length == 0 ? <NoResults message="We couldn't find anything"/> : (
           <EventList events={events} />
         )}
       </SimpleGrid>
 
-      {events?.length == 0 && !isLoading ? <NoResults message="We couldn't find anything"/> : (
+      {events?.length == 0 && !isLoading ? null : (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

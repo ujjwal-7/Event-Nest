@@ -1,15 +1,7 @@
 const {  CloudFrontClient, CreateInvalidationCommand  } = require("@aws-sdk/client-cloudfront");
 const { serverConfig } = require("../config/index");
 
-const cloudfrontDistributionId = process.env.CLOUDFRONT_DISTRIBUTION_ID
-
-const cloudfront = new CloudFrontClient({
-  credentials: {
-    accessKeyId: serverConfig.AWS_ACCESS_KEY,
-    secretAccessKey: serverConfig.AWS_SECRET_KEY,
-  }
-});
-
+const cloudfront = new CloudFrontClient({});
 
 const invalidateCloudFrontDistribution = async (key) => {
 

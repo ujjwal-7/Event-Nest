@@ -5,6 +5,7 @@ module.exports = {
     username: serverConfig.DB_USERNAME,
     password: serverConfig.DB_PASSWORD,
     database: serverConfig.DB_NAME,
+    host: serverConfig.DB_HOST,
     dialect: 'mysql',
   },
   test: {

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const useFetchEvents = (filters, currentPage) => {
   const [events, setEvents] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("");
   const [totalPages, setTotalPages] = useState();
   const { user } = useContext(AuthContext);
@@ -41,9 +41,11 @@ const useFetchEvents = (filters, currentPage) => {
       const result = await response.json();
       setEvents(result.data.events);
       setTotalPages(result.data.totalPages);
-      setIsLoading(false);
+      
     } catch (error) {
       setError(error.message);
+      
+    } finally {
       setIsLoading(false);
     }
   }, [filters, currentPage]);

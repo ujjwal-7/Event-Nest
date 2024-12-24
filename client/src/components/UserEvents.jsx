@@ -28,9 +28,9 @@ const UserEvents = ({ userId }) => {
           Array.from({ length: 8 }).map((_, index) => (
             <EventCardSkeleton key={index} />
           ))
-        ) : (
+        ) : events.length > 0 ? (
           <EventList events={events} />
-        )}
+        ) : <NoResults message="We couldn't find anything" />}
       </SimpleGrid>
       {events.length > 0 ? (
         <Pagination
@@ -39,7 +39,7 @@ const UserEvents = ({ userId }) => {
           handlePrev={handlePrev}
           handleNext={handleNext}
         />
-      ) : <NoResults message="We couldn't find anything" />}
+      ) : null}
     </>
   );
 };
